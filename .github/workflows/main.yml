@@ -41,9 +41,18 @@ jobs:
 #          username: ${{ secrets.DOCKERHUB_USERNAME }}
 #          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: === build-push-action ===
-        uses: docker/build-push-action@v3
+      - name: ===Publish to GitHub Packages
+        uses: docker/build-push-action@v1
         with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: docker.pkg.github.com
           repository: softfavorite/rep1
-          push: true
-          tags: latest, ${{ github.run_number }}      
+          tags: latest, ${{ github.run_number }}
+    
+#       - name: === build-push-action ===
+#         uses: docker/build-push-action@v3
+#         with:
+#           repository: softfavorite/rep1
+#           push: true
+#           tags: latest, ${{ github.run_number }}      
