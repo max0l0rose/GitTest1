@@ -11,9 +11,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
@@ -28,8 +26,8 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo ----------------
-          echo workspace = ${{ github.workspace }}
-          echo run_number = ${{ github.run_number }}
+          echo github.workspace = ${{ github.workspace }}
+          echo github.run_number = ${{ github.run_number }}
           echo ----------------
           echo DOCKERHUB_USERNAME = ${{ secrets.DOCKERHUB_USERNAME }}
           echo DOCKERHUB_TOKEN = ${{ secrets.DOCKERHUB_TOKEN }}
