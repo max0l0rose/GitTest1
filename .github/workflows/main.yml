@@ -30,9 +30,16 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo ----------------
-          ls ${{ github.workspace }}
+          ls workspace = ${{ github.workspace }}
+          ls run_number = ${{ github.run_number }}
           echo ======================
-          
+
+      - name: === Login to DockerHub
+            uses: docker/login-action@v3
+            with:
+              username: ${{ secrets.DOCKERHUB_USERNAME }}
+              password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: === build-push-action ===
         uses: docker/build-push-action@v3
         with:
