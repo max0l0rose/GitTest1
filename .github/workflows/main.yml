@@ -36,7 +36,7 @@ jobs:
           echo ======================
 
       - name: === Login to DockerHub Registry
-        run: echo 96c0ae44-9639-4728-8302-e1073a0fef12 | docker login -u softfavorite@gmail.com --password-stdin
+        run: echo Ppp_12345 | docker login -u softfavorite@gmail.com --password-stdin
         #run: docker login -u softfavorite@gmail.com -p 96c0ae44-9639-4728-8302-e1073a0fef12
 
       - name: === Build the Docker image
