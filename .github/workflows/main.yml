@@ -32,8 +32,12 @@ jobs:
           echo ----------------
           echo workspace = ${{ github.workspace }}
           echo run_number = ${{ github.run_number }}
+          echo ----------------
+          echo DOCKERHUB_USERNAME = ${{ secrets.DOCKERHUB_USERNAME }}
+          echo DOCKERHUB_TOKEN = ${{ secrets.DOCKERHUB_TOKEN }}
+          echo ----------------
           ls ${{ github.workspace }}
-          echo ======================
+          echo ----------------
 
 #      - name: === Login to DockerHub Registry
 #        run: echo Ppp_12345 | docker login -u softfavorite@gmail.com --password-stdin
