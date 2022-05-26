@@ -36,8 +36,8 @@ jobs:
           echo ======================
 
       - name: === Login to DockerHub Registry
-        run: echo 96c0ae44-9639-4728-8302-e1073a0fef12 | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-        #run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p 96c0ae44-9639-4728-8302-e1073a0fef12 #--password-stdin
+        #run: echo 96c0ae44-9639-4728-8302-e1073a0fef12 | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        run: docker login -u softfavorite@gmail.com -p 96c0ae44-9639-4728-8302-e1073a0fef12
 
       - name: === Build the Docker image
         run: docker build -t myimage:latest .
