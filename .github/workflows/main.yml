@@ -33,7 +33,6 @@ jobs:
           echo workspace = ${{ github.workspace }}
           echo run_number = ${{ github.run_number }}
           ls ${{ github.workspace }}
-          ls ${{ github.run_number }}
           echo ======================
 
       - name: === Login to DockerHub
