@@ -73,6 +73,8 @@ jobs:
       - name: === build-push-action ===
         uses: docker/build-push-action@v3
         with:
-          repository: softfavorite/rep1
+#          repository: softfavorite/rep1
           push: true
           tags: latest, ${{ github.run_number }}
+          build-args: PROFILE=nectar,ARG2=test
+          cache-from: type=registry,ref=softfavorite/rep1:latest
