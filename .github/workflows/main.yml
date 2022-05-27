@@ -75,6 +75,6 @@ jobs:
         with:
 #          repository: softfavorite/rep1
           push: true
-          tags: latest, ${{ github.run_number }}, DOCKERHUB_USERNAME/rep1
+          tags: latest, ${{ github.run_number }}, ${{ secrets.DOCKERHUB_USERNAME }}/rep1
           build-args: PROFILE=nectar,ARG2=test
           cache-from: type=registry,ref=softfavorite/rep1:latest
