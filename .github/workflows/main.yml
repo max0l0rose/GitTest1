@@ -8,14 +8,72 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build1:
+  build2:
     runs-on: ubuntu-latest
     steps:
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
       - name: === Run a one-line script
         run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: === Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+          echo ----------------
+          echo github.workspace = ${{ github.workspace }}
+          echo github.run_number = ${{ github.run_number }}
+          echo ----------------
+          echo DOCKERHUB_USERNAME = ${{ secrets.DOCKERHUB_USERNAME }}
+          echo DOCKERHUB_TOKEN = ${{ secrets.DOCKERHUB_TOKEN }}
+          echo ----------------
+          ls ${{ github.workspace }}
+          echo ----------------
+
+     - name: === Login to DockerHub Registry
+       run: echo Ppp_12345 | docker login -u softfavorite --password-stdin
+#        #run: docker login -u softfavorite@gmail.com -p 96c0ae44-9639-4728-8302-e1073a0fef12
+
+#      - name: === Login to DockerHub
+#        uses: docker/login-action@v1
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: === Build the Docker image
+        run: docker build -t myimage:latest .
+
+      - name: === Tag the Docker image
+        run: docker tag myimage:latest myimage:1.0
+
+      - name: === Push the Docker image to the registry
+        run: docker push myimage:1.0 #docker push softfavorite/rep1:tagname
+
+#      - name: === Login to DockerHub
+#        uses: docker/login-action@v2
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+#      - name: ===Publish to GitHub Packages
+#        uses: docker/build-push-action@v1
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#          registry: docker.pkg.github.com
+#          repository: softfavorite/rep1
+#          tags: latest, ${{ github.run_number }}
+    
+#       - name: === build-push-action ===
+#         uses: docker/build-push-action@v3
+#         with:
+#           repository: softfavorite/rep1
+#           push: true
+#           tags: latest, ${{ github.run_number }}      
