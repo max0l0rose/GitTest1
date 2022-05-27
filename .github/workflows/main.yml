@@ -5,16 +5,34 @@ on:
   pull_request:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows you to run this workflow manually from the Actions tab1
   workflow_dispatch:
 
-#OKOKOKOK
+#OKOKOKOK1
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it1
       - uses: actions/checkout@v3
 
+      # Runs a single command using the runners shell
+      - name: === Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: === Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+          echo ----------------
+          echo github.workspace = ${{ github.workspace }}
+          echo github.run_number = ${{ github.run_number }}
+          echo ----------------
+          echo DOCKERHUB_USERNAME = ${{ secrets.DOCKERHUB_USERNAME }}
+          echo DOCKERHUB_TOKEN = ${{ secrets.DOCKERHUB_TOKEN }}
+          echo ----------------
+          ls ${{ github.workspace }}
+          echo ----------------
