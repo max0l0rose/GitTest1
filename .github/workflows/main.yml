@@ -37,6 +37,13 @@ jobs:
           ls ${{ github.workspace }}
           echo ----------------
 
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+
 #      - name: === Login to DockerHub Registry
 #        run: echo 96c0ae44-9639-4728-8302-e1073a0fef12 | docker login -u softfavorite --password-stdin
 
@@ -75,6 +82,11 @@ jobs:
         with:
 #          repository: softfavorite/rep1
           push: true
-          tags: latest, ${{ github.run_number }}, ${{ secrets.DOCKERHUB_USERNAME }}/rep1
+          tags: latest, ${{ github.run_number }}, ${{ secrets.DOCKERHUB_USERNAME }}/rep1:latest
           build-args: PROFILE=nectar,ARG2=test
           cache-from: type=registry,ref=softfavorite/rep1:latest
+          cache-to: type=inline
+#          secrets: |
+#            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
+#          context: .
+
