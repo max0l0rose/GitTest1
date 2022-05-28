@@ -18,9 +18,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it1
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: === Run a one-line script
-        run: echo Hello, world!
+#      # Runs a single command using the runners shell
+#      - name: === Run a one-line script
+#        run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
       - name: === Run a multi-line script
@@ -38,7 +38,7 @@ jobs:
           echo ----------------
 
 
-      - name: === Set up JDK 1.8
+      - name: === Set up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 11
@@ -59,7 +59,7 @@ jobs:
 #          password: ${{ secrets.DOCKERHUB_PWD }}
 
       - name: === Build the Docker image
-        run: docker build . -t softfavorite/gittest1:latest -t ${{ github.run_number }}
+        run: docker build . -t softfavorite/gittest1:latest -t qweqwe -t ${{ github.run_number }}
 
 #      - name: === Tag the Docker image
 #        run: docker tag myimage:latest myimage:1.0

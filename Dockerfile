@@ -4,7 +4,7 @@ ARG PROFILE
 
 ENV PROFILE_VAR=$PROFILE
 
-#ADD target/GitTest1-0.0.1-SNAPSHOT.jar GitTest1-0.0.1-SNAPSHOT.jar
+ADD target/GitTest1-0.0.1-SNAPSHOT.jar GitTest1-0.0.1-SNAPSHOT.jar
 
 RUN echo "Kuku: $PROFILE !!!!"
 
