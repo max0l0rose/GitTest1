@@ -44,7 +44,7 @@ jobs:
           java-version: 1.8
 
       - name: === mvn
-        run: mvn package
+        run: mvn clean package
 
       - name: === Login to DockerHub Registry
         run: echo 96c0ae44-9639-4728-8302-e1073a0fef12 | docker login -u softfavorite --password-stdin
