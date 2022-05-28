@@ -67,6 +67,9 @@ jobs:
       - name: === Push the Docker image to the registry
         run: docker push softfavorite/gittest1:latest #docker push softfavorite/gittest1:tagname
 
+      - name: === RUN
+        run: java -Dspring.profiles.active=$PROFILE_VAR -jar /GitTest1-0.0.1-SNAPSHOT.jar
+
 #      - name: === Login to DockerHub
 #        uses: docker/login-action@v2
 #        with:
