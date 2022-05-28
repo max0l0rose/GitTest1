@@ -41,10 +41,13 @@ jobs:
       - name: === Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 11
+
+      - name: === java version
+        run: java -version
 
       - name: === mvn
-        run: mvn clean package
+        run: mvn package
 
       - name: === Login to DockerHub Registry
         run: echo 96c0ae44-9639-4728-8302-e1073a0fef12 | docker login -u softfavorite --password-stdin
