@@ -58,26 +58,20 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PWD }}
 
-      - name: === Build the Docker image
-        run: docker build . -t softfavorite/gittest1_alp:latest #-t ${{ github.run_number }}
-
-#      - name: === Tag the Docker image
-#        run: docker tag myimage:latest myimage:1.0
-
-      - name: === Push the Docker image to the registry
-        run: docker push softfavorite/gittest1_alp:latest #docker push softfavorite/gittest1:tagname
+#      - name: === Build the Docker image
+#        run: docker build . -t softfavorite/gittest1_alp:latest #-t ${{ github.run_number }}
+#
+##      - name: === Tag the Docker image
+##        run: docker tag myimage:latest myimage:1.0
+#
+#      - name: === Push the Docker image to the registry
+#        run: docker push softfavorite/gittest1_alp:latest #docker push softfavorite/gittest1:tagname
 
       - name: === LS
         run: ls
 
 #      - name: === RUN
 #        run: java -Dspring.profiles.active=$PROFILE_VAR -jar target/GitTest1-0.0.1-SNAPSHOT.jar
-
-#      - name: === Login to DockerHub
-#        uses: docker/login-action@v2
-#        with:
-#          username: ${{ secrets.DOCKERHUB_USERNAME }}
-#          password: ${{ secrets.DOCKERHUB_PWD }}
 
 #      - name: ===Publish to GitHub Packages
 #        uses: docker/build-push-action@v1
@@ -88,16 +82,16 @@ jobs:
 #          repository: softfavorite/gittest1
 #          tags: latest, ${{ github.run_number }}
 
-#      - name: === build-push-action ===
-#        uses: docker/build-push-action@v3
-#        with:
-##          repository: softfavorite/gittest1
-#          push: true
-#          tags: latest, ${{ github.run_number }}, ${{ secrets.DOCKERHUB_USERNAME }}/gittest1:latest
-#          build-args: PROFILE=nectar,ARG2=test
-#          cache-from: type=registry,ref=softfavorite/gittest1:latest
-#          cache-to: type=inline
-##          secrets: |
-##            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
-#          context: .
+      - name: === build-push-action ===
+        uses: docker/build-push-action@v3
+        with:
+#          repository: softfavorite/gittest1
+          push: true
+          tags: softfavorite/gittest1_alp:latest #, ${{ github.run_number }}, ${{ secrets.DOCKERHUB_USERNAME }}/gittest1:latest
+          build-args: PROFILE=nectar, ARG2=test
+          cache-from: type=registry,ref=softfavorite/gittest1_alp:latest
+          cache-to: type=inline
+#          secrets: |
+#            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
+          context: .
 
