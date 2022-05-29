@@ -18,7 +18,9 @@ ADD target/GitTest1-0.0.1-SNAPSHOT.jar GitTest1-0.0.1-SNAPSHOT.jar
 
 RUN echo "Kuku: $PROFILE !!!!"
 
-RUN java -jar /GitTest1-0.0.1-SNAPSHOT.jar
+#RUN java -jar /GitTest1-0.0.1-SNAPSHOT.jar
+
+ENTRYPOINT ["java", "-Dspring.profiles.active=$PROFILE_VAR", "-jar", "/GitTest1-0.0.1-SNAPSHOT.jar"]
 
 #ENTRYPOINT ["/bin/bash", "-c", "java","-Dspring.profiles.active=$PROFILE_VAR","-jar","/GitTest1-0.0.1-SNAPSHOT.jar"]
 ## DO NOT USE(The variable would not be substituted): ENTRYPOINT ["java","-Dspring.profiles.active=$PROFILE_VAR","-jar","/hello-world-docker-action.jar"]
