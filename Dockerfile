@@ -1,4 +1,5 @@
-FROM alpine:3.16
+#alpine:3.16
+FROM openjdk:11
 
 ARG PROFILE
 
