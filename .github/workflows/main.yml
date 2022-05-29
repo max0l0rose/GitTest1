@@ -90,7 +90,7 @@ jobs:
           tags: softfavorite/gittest1_alp:latest #, ${{ github.run_number }}, ${{ secrets.DOCKERHUB_USERNAME }}/gittest1:latest
           build-args: PROFILE=nectar, ARG2=test
           cache-from: type=registry,ref=softfavorite/gittest1_alp:latest
-#          cache-to: type=inline
+          cache-to: type=inline
 ##          secrets: |
 ##            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 #          context: .
