@@ -82,16 +82,16 @@ jobs:
 #          repository: softfavorite/gittest1
 #          tags: latest, ${{ github.run_number }}
 
-      - name: === build-push-action ===
+      - name: === docker/build-push-action@v3 ===
         uses: docker/build-push-action@v3
         with:
 #          repository: softfavorite/gittest1
           push: true
           tags: softfavorite/gittest1_alp:latest #, ${{ github.run_number }}, ${{ secrets.DOCKERHUB_USERNAME }}/gittest1:latest
           build-args: PROFILE=nectar, ARG2=test
-          cache-from: type=registry,ref=softfavorite/gittest1_alp:latest
-          cache-to: type=inline
-#          secrets: |
-#            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
-          context: .
+#          cache-from: type=registry,ref=softfavorite/gittest1_alp:latest
+#          cache-to: type=inline
+##          secrets: |
+##            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
+#          context: .
 
